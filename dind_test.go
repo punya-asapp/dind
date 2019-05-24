@@ -21,7 +21,7 @@ func TestAll(t *testing.T) {
 	}
 	defer pool.Purge(res)
 
-	url := fmt.Sprintf("amqp://guest:guest@localhost:%s/", res.GetPort("5672/tcp"))
+	url := fmt.Sprintf("amqp://guest:guest@%s/", res.GetHostPort("5672/tcp"))
 
 	var (
 		conn *amqp.Connection
