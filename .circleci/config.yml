@@ -3,8 +3,11 @@ version: 2
 jobs:
   build:
     docker:
-    - image: circleci/golang:1.12
+    - image: circleci/buildpack-deps:19.04
     steps:
     - setup_remote_docker
     - checkout
-    - run: go test
+    - run: |
+        docker build -t test .
+        docker run -e DOCKER_HOST=$DOCKER_HOST -it --rm test
+
