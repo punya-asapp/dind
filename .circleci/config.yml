@@ -8,6 +8,7 @@ jobs:
     - setup_remote_docker
     - checkout
     - run: |
+        cp $DOCKER_CERT_PATH docker.crt
         docker build -t test .
         docker run -e DOCKER_HOST=$DOCKER_HOST -it --rm test
 
