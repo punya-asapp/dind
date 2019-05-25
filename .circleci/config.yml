@@ -6,6 +6,13 @@ jobs:
       image: ubuntu-1604:201903-01
     steps:
     - checkout
-    - run: |
-        docker build --build-arg DOCKER_CERT_PATH -t test .
-        docker run -v /var/run/docker.sock:/var/run/docker.sock -it --rm test
+    - run:
+        name: Install current Go
+        command: |
+          sudo add-apt-repository ppa:longsleep/golang-backports
+          sudo apt-get update
+          sudo apt-get install golang-go
+    - run:
+        name: Run tests
+        command: |
+          go test -v
