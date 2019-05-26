@@ -7,4 +7,4 @@ jobs:
     steps:
     - checkout
     - run: sudo ./setup.sh
-    - run: go test -v
+    - run: /usr/bin/go test -v
